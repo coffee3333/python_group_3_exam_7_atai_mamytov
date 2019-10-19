@@ -1,0 +1,26 @@
+
+{% extends 'base.html' %}
+
+{% block title %} {{ poll.question }} {% endblock %}
+
+{% block menu %}
+    <a href="{% url "poll_edit" poll.pk %}" class="btn btn-outline-light">Edit</a>
+    <a href="{% url "poll_delete" poll.pk %}" class="btn btn-outline-light">Delete</a>
+{% endblock %}
+
+{% block content %}
+    <h1 class="mt-2">{{ poll.question }}</h1>
+    <p>Created at: {{ poll.created_at }}</p>
+    <hr/>
+    <h3>Answers: </h3>
+    <hr/>
+    {% for choice in poll.choice.all %}
+        <div class="tracker_for_project">
+                <h4>{{ choice.answer_option }}</h4>
+            </div>
+        <hr/>
+        {% empty %}
+            <p>No answers</p>
+        {% endfor %}
+    <a href="{% url 'poll_ls' %}"class="btn btn-outline-success btn-block">Back</a>
+{% endblock %}

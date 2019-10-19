@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{##}
+{% block menu %}
+    <a href="{% url 'poll_create' %}" class="btn btn-outline-light">Add poll</a>
+{#    <a href="{% url 'type_ls' %}" class="btn btn-outline-light">Types list</a>#}
+{#    <a href="{% url 'status_ls' %}" class="btn btn-outline-light">Statuses list</a>#}
+{#    <a href="{% url 'project_ls' %}" class="btn btn-outline-light">Projects list</a>#}
+{% endblock %}
+
+{% block content %}
+    <h1 class="mt-5">Polls</h1>
+    <hr/>
+    {% if is_paginated %}
+        {% include  'partial/pagination.html' %}
+    {% endif %}
+    <div class="my-3">
+        {% for poll in polls %}
+            <hr/>
+            <div class="container">
+                <div class="container mb-5">{{ poll.question }}</div>
+                <a href="{% url 'poll_detail' poll.pk %}" class="btn btn-outline-success">More</a>
+                <a href="{% url 'poll_edit' poll.pk %}" class="btn btn-outline-success">Edit</a>
+                <a href="{% url 'poll_delete' poll.pk %}" class="btn btn-outline-success">Delete</a>
+            </div>
+        {% endfor %}
+    </div>
+    {% if is_paginated %}
+        {% include  'partial/pagination.html' %}
+    {% endif %}
+{% endblock %}
