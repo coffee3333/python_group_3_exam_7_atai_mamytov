@@ -24,3 +24,5 @@ class Answer(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Created time')
     choice = models.ForeignKey('webapp.Choice', related_name='answer', on_delete=models.CASCADE, verbose_name='choice')
 
+    def __str__(self):
+        return self.poll, self.choice

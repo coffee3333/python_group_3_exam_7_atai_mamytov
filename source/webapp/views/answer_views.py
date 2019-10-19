@@ -1,5 +1,4 @@
 from django.shortcuts import redirect, get_object_or_404, render
-from django.urls import reverse, reverse_lazy
 from django.views import View
 
 from webapp.models import Poll, Answer, Choice
@@ -18,7 +17,6 @@ class QuestionnaireCreateView(View):
     def post(self, request, *args, **kwargs):
         pk = request.POST['value']
         answer = get_object_or_404(Choice, pk=pk)
-        print(answer)
         poll = get_object_or_404(Poll, pk=kwargs['pk'])
         Answer.objects.create(choice=answer, poll=poll)
         return redirect('poll_ls')

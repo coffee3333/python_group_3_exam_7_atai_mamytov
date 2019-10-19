@@ -2,9 +2,9 @@
 
 {% block title %}Add answ Poll{% endblock %}
 
-{#{% block menu %}#}
-{#    <a href="{% url 'poll_detail' poll.pk %}" class="btn btn-outline-light">View</a>#}
-{#{% endblock %}#}
+{% block menu %}
+    <a href="{% url 'poll_detail' poll.pk %}" class="btn btn-outline-light">View</a>
+{% endblock %}
 
 {% block content %}
     <h1 class="my-5">{{ poll.question }}</h1>
