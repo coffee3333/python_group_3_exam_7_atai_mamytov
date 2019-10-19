@@ -30,3 +30,9 @@ class AnswerForPollForm(forms.ModelForm):
             'answer_option':forms.Textarea
         }
         fields = ['answer_option']
+
+
+class AnswerForm(forms.ModelForm):
+    class Meta:
+        model = Answer
+        fields = ['choice', 'poll']

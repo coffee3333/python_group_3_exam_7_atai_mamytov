@@ -18,6 +18,7 @@
                 <a href="{% url 'poll_detail' poll.pk %}" class="btn btn-outline-success">More</a>
                 <a href="{% url 'poll_edit' poll.pk %}" class="btn btn-outline-success">Edit</a>
                 <a href="{% url 'poll_delete' poll.pk %}" class="btn btn-outline-success">Delete</a>
+                <a href="{% url 'questionnaire_create' poll.pk %}" class="btn btn-outline-success">Qua</a>
             </div>
         {% endfor %}
     </div>

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Add answ Poll{% endblock %}
+
+{#{% block menu %}#}
+{#    <a href="{% url 'poll_detail' poll.pk %}" class="btn btn-outline-light">View</a>#}
+{#{% endblock %}#}
+
+{% block content %}
+    <h1 class="my-5">{{ poll.question }}</h1>
+    <form action="{% url "questionnaire_create" poll.pk %}" method="POST">
+        {% csrf_token %}
+        {% for choice in choices %}
+            <input type="radio" value="{{ choice.pk }}" id="{{ choice.pk }}" name="value"> {{ choice.answer_option }}<hr/>
+        {% endfor %}
+        <input type="submit" value="Select" class="btn btn-outline-success btn-block">
+    </form>
+    <a href="{% url 'poll_ls' %}"class="btn btn-outline-success btn-block">Back</a>
+{% endblock %}
