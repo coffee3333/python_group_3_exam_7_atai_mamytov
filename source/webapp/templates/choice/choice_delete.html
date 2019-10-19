@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete Answer{% endblock %}
+
+{% block menu %}
+    <a href="{% url 'poll_detail' choice.poll.pk %}" class="btn btn-outline-light">View</a>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h2 class="mt-5">Do you want to delete answer: {{ choice.answer_option }} ?</h2>
+        <form method="POST" action="{% url 'answ_delete' choice.pk %}">
+            {% csrf_token %}
+            <p><input type="submit" value="Confirm" class="btn btn-outline-success btn-block"></p>
+            <p><a href="{% url 'poll_detail' choice.poll.pk %}" class="btn btn-outline-success btn-block">Back</a></p>
+        </form>
+    </div>
+{% endblock %}

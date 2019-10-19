@@ -20,3 +20,13 @@ class ChoiceForm(forms.ModelForm):
             'answer_option':forms.Textarea
         }
         fields = ['answer_option', 'poll']
+
+
+class AnswerForPollForm(forms.ModelForm):
+    class Meta:
+        model = Choice
+
+        widgets = {
+            'answer_option':forms.Textarea
+        }
+        fields = ['answer_option']

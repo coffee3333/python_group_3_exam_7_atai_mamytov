@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Add answ Poll{% endblock %}
+
+{#{% block menu %}#}
+{#    <a href="{% url 'poll_detail' poll.pk %}" class="btn btn-outline-light">View</a>#}
+{#{% endblock %}#}
+
+{% block content %}
+    <h1 class="mt-3">Add anser for poll</h1>
+    <form method="POST" action="">
+        {% include 'partial/form.html' with button_text="Update" %}
+    </form>
+    <a href="{% url 'poll_ls' %}"class="btn btn-outline-success btn-block">Back</a>
+{% endblock %}

@@ -4,6 +4,7 @@
 {% block title %} {{ poll.question }} {% endblock %}
 
 {% block menu %}
+    <a href="{% url "answ_create" poll.pk %}" methods="POST" id = "add_answer" class="btn btn-outline-light">Add Answer</a>
     <a href="{% url "poll_edit" poll.pk %}" class="btn btn-outline-light">Edit</a>
     <a href="{% url "poll_delete" poll.pk %}" class="btn btn-outline-light">Delete</a>
 {% endblock %}
@@ -16,8 +17,10 @@
     <hr/>
     {% for choice in poll.choice.all %}
         <div class="tracker_for_project">
-                <h4>{{ choice.answer_option }}</h4>
-            </div>
+            <h4>{{ choice }}</h4>
+            <a href="{% url 'answ_edit' choice.pk %}" methods="POST" id = "edit_answer" class="btn btn-outline-success">Edit</a>
+            <a href="{% url 'answ_delete' choice.pk %}" class="btn btn-outline-success">Delete</a>
+        </div>
         <hr/>
         {% empty %}
             <p>No answers</p>
